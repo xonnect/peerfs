@@ -20,6 +20,8 @@ defmodule PeerFSGateway.Mixfile do
      {:jsx, git: "git://github.com/talentdeficit/jsx.git"},
      {:sockjs, git: "git://github.com/xhs/sockjs-erlang.git"},
      {:exlager, git: "git://github.com/khia/exlager.git"},
-     {:amnesia, git: "git://github.com/meh/amnesia.git"}]
+     {:amnesia, git: "git://github.com/meh/amnesia.git"},
+     {:poolboy, git: "git://github.com/devinus/poolboy.git", override: true},
+     {:uuid, git: "git://github.com/okeuday/uuid.git"}]
   end
 end

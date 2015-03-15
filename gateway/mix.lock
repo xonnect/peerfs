@@ -6,5 +6,8 @@
   "goldrush": {:git, "git://github.com/DeadZen/goldrush.git", "71e63212f12c25827e0c1b4198d37d5d018a7fec", [tag: "0.1.6"]},
   "jsx": {:git, "git://github.com/talentdeficit/jsx.git", "9706401c0e1fa33161d1ec8ab20edcdccc977e17", []},
   "lager": {:git, "https://github.com/basho/lager.git", "d33ccf3b69de09a628fe38b4d7981bb8671b8a4f", []},
+  "poolboy": {:git, "git://github.com/devinus/poolboy.git", "b724a71bce1f90d1cd9007427f9dc7b5ea35deb4", []},
+  "quickrand": {:hex, :quickrand, "1.4.0"},
   "ranch": {:git, "git://github.com/ninenines/ranch.git", "adf1822defc2b7cfdc7aca112adabfa1d614043c", [ref: "1.0.0"]},
-  "sockjs": {:git, "git://github.com/xhs/sockjs-erlang.git", "17a54a83734193c0fdfd432717d6d8a7856bcb44", []}}
+  "sockjs": {:git, "git://github.com/xhs/sockjs-erlang.git", "17a54a83734193c0fdfd432717d6d8a7856bcb44", []},
+  "uuid": {:git, "git://github.com/okeuday/uuid.git", "f154016f3a73075f7cf3f05be01edeea93564367", []}}

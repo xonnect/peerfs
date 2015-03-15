@@ -10,7 +10,7 @@ defmodule Mix.Tasks.Install do
     Amnesia.Schema.create
     Amnesia.start
 
-    Cache.create!(memory: [node])
+    Cache.create! memory: [node]
     Cache.wait
 
     Amnesia.transaction do
