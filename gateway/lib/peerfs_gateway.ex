@@ -27,6 +27,7 @@ defmodule PeerFSGateway do
     ]
 
     children = [
+      supervisor(Peer.Pool, []),
       supervisor(:cowboy, cowboy_args, function: :start_http)
     ]
 
