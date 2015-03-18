@@ -89,7 +89,7 @@ defmodule Handler.Socket do
 
   defp handle_add_peer(connection, list, peer_info) do
     scope = :proplists.get_value "scope", list, "global"
-    true = scope in ["gloabl", "local"]
+    true = scope in ["global", "local"]
     peer_info = Peer.add peer_info, scope
     body = response_body "ok", "peer.id", peer_info.peer_id
     connection.send body

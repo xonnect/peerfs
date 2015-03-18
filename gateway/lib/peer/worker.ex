@@ -30,8 +30,8 @@ defmodule Peer.Worker do
       values ->
         Cache.put key, [value | values]
     end
-    Cache.put {:peer_info, peer_info.peer}, peer_info
     peer_info = peer_info.update peer_id: value.peer_id, peer_scope: scope, peer_ref: peer_ref
+    Cache.put {:peer_info, peer_info.peer}, peer_info
     {:reply, peer_info, state}
   end
 
@@ -60,7 +60,10 @@ defmodule Peer.Worker do
         nil
       peer_info ->
         Cache.remove {:peer_info, peer}
-        key = {:peer, peer_info.ip_address}
+        key = case peer_info.peer_scope do
+          "global" -> {:peer, :global}
+          "local" -> {:peer, peer_info.ip_address}
+        end
         result = Cache.get key
         case result do
           nil ->
