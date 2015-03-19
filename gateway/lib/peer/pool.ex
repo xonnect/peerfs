@@ -38,7 +38,8 @@ defmodule Peer.Pool do
   end
 
   def signal(peer_info, remote_id, data) do
-    peers = Cache.get {:peer, peer_info.ip_address}, []
+    Lager.debug "[peer.pool/signal] from ~p to ~p: ~p", [peer_info.peer_id, remote_id, data]
+    peers = list peer_info, "all"
     result = Enum.filter peers, fn (p) -> p.peer_id == remote_id end
     case result do
       [] -> :ok
