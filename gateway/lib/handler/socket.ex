@@ -35,8 +35,8 @@ defmodule Handler.Socket do
     end
   end
 
-  defp do_handle(connection, "get_public_address", _list, peer_info) do
-    body = response_body "ok", "public.address", :erlang.list_to_binary peer_info.ip_address
+  defp do_handle(connection, "get_public_ip", _list, peer_info) do
+    body = response_body "ok", "public.ip", :erlang.list_to_binary peer_info.ip_address
     connection.send body
     {:ok, peer_info}
   end
@@ -119,9 +119,9 @@ defmodule Handler.Socket do
     {:ok, peer_info}
   end
 
-  defp response_body(status, info, data \\ :null) do
+  defp response_body(code, info, data \\ :null) do
     response = [
-      status: status,
+      code: code,
       info: info,
       data: data
     ]

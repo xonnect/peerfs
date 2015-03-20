@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from ws4py.client.threadedclient import WebSocketClient
 from threading import Thread
 from json import dumps, loads
