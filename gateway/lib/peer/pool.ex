@@ -37,6 +37,12 @@ defmodule Peer.Pool do
     Enum.filter peers, fn (p) -> p.peer != peer_info.peer end
   end
 
+  def notify(peer_info, data) do
+    Lager.debug "[peer.pool/notify] from ~p to all: ~p", [peer_info.peer_id, data]
+    peers = list peer_info, "all"
+    Enum.map peers, fn (p) -> send p.peer, {:notify, peer_info.peer_id, data} end
+  end
+
   def signal(peer_info, remote_id, data) do
     Lager.debug "[peer.pool/signal] from ~p to ~p: ~p", [peer_info.peer_id, remote_id, data]
     peers = list peer_info, "all"

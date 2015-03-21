@@ -1,2 +1,3 @@
 peer/python/peerfs/*.dylib
 peer/python/peerfs/*.so
+peer/python/peerfs/*.pyc

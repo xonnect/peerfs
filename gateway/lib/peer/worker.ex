@@ -1,5 +1,6 @@
 defmodule Peer.Worker do
   alias Cache.Distributed, as: Cache
+  alias Peer.Pool, as: Peer
   import Model.Record
   require Lager
   use GenServer
@@ -32,6 +33,7 @@ defmodule Peer.Worker do
     end
     peer_info = peer_info.update peer_id: value.peer_id, peer_scope: scope, peer_ref: peer_ref
     Cache.put {:peer_info, peer_info.peer}, peer_info
+    Peer.notify peer_info, "hi"
     {:reply, peer_info, state}
   end
 
@@ -48,6 +50,7 @@ defmodule Peer.Worker do
         :erlang.demonitor peer_info.peer_ref
     end
     Cache.remove {:peer_info, peer_info.peer}
+    Peer.notify peer_info, "bye"
     {:noreply, state}
   end
 
@@ -73,6 +76,7 @@ defmodule Peer.Worker do
             Lager.debug "[peer.worker/handle_info] filtrated peers: ~p", [filtrated]
             Cache.put key, filtrated
         end
+        Peer.notify peer_info, "bye"
     end
     {:noreply, state}
   end

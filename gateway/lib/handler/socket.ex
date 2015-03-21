@@ -111,6 +111,15 @@ defmodule Handler.Socket do
     {:ok, peer_info}
   end
 
+  def sockjs_info(connection, {:notify, remote_id, data}, peer_info) do
+    body = response_body "new", "notify", [
+      peer_id: remote_id,
+      data: data
+    ]
+    connection.send body
+    {:ok, peer_info}
+  end
+
   def sockjs_info(_connection, _info, peer_info) do
     {:ok, peer_info}
   end
