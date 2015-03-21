@@ -22,7 +22,7 @@ defmodule Peer.Worker do
       "local" -> {:peer, peer_info.ip_address}
       "global" -> {:peer, :global}
     end
-    value = new peer_id: Utility.random_id, peer: peer_info.peer, peer_ref: peer_ref
+    value = new peer_id: "peer:" <> Utility.random_id, peer: peer_info.peer, peer_ref: peer_ref
     Lager.debug "[peer.worker/handle_call] peer value: ~p", [value]
     result = Cache.get key
     case result do
