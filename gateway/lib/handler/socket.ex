@@ -35,12 +35,6 @@ defmodule Handler.Socket do
     end
   end
 
-  defp do_handle(connection, "get_public_ip", _list, peer_info) do
-    body = response_body "ok", "public.ip", :erlang.list_to_binary peer_info.ip_address
-    connection.send body
-    {:ok, peer_info}
-  end
-
   defp do_handle(connection, "add_peer", list, peer_info) do
     case peer_info.peer_id do
       nil ->
